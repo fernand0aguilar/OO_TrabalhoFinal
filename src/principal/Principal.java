@@ -13,8 +13,8 @@ public class Principal {
 			public void run() {
 				try {
 					ColecaoPessoas conjuntoPessoas = new ColecaoPessoas();
-					MenuInicio window = new MenuInicio(conjuntoPessoas.getPessoas());
-					window.getFrame().setVisible(true);
+					MenuBoasVindas novaJanelaBoasVindas = new MenuBoasVindas(conjuntoPessoas.getPessoas());
+					novaJanelaBoasVindas.getFrameMenuBoasVindas().setVisible(true);
 				} catch (Exception erro) {
 					erro.printStackTrace();
 				}

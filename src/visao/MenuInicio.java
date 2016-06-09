@@ -70,13 +70,19 @@ public class MenuInicio extends JFrame{
 		buttonConsultar.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				frameMenuInicio.setVisible(false);
-				MenuConsultar janelaMenuConsultar = new MenuConsultar();
+				MenuConsultar janelaMenuConsultar = new MenuConsultar(conjuntoPessoas);
 			}
 		});
 		frameMenuInicio.getContentPane().add(buttonConsultar);
 		
 		/*Botao Pesquisar via nome*/
 		JButton buttonPesquisar = new JButton("Pesquisar");
+		buttonPesquisar.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				frameMenuInicio.setVisible(false);
+				MenuPesquisar janeMenuPesquisar = new MenuPesquisar(conjuntoPessoas);
+			}
+		});
 		buttonPesquisar.setBounds(498, 50, 126, 32);
 		frameMenuInicio.getContentPane().add(buttonPesquisar);
 		

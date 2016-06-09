@@ -48,6 +48,7 @@ public class MenuCadastro extends JFrame{
 		frameCadastro.setTitle("Cadastro de um novo registro de vacinacao");
 		frameCadastro.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frameCadastro.getContentPane().setLayout(null);
+		
 		/*Label inicial*/
 		JLabel tituloCadastroPessoa = DefaultComponentFactory.getInstance().createTitle("Preencha os campos abaixo com os dados solicitados.");
 		tituloCadastroPessoa.setBounds(15, 0, 400, 30);
@@ -78,7 +79,6 @@ public class MenuCadastro extends JFrame{
 		textField_CPF.addFocusListener(new FocusAdapter() {
 			public void focusGained(FocusEvent e) {
 				textField_CPF.setText("");
-
 			}
 		});
 		textField_CPF.setColumns(10);
@@ -89,7 +89,7 @@ public class MenuCadastro extends JFrame{
 		frameCadastro.getContentPane().add(labelData);
 		textField_Data = new JTextField();
 
-		textField_Data.setText("dd/mm/aaaa");
+		textField_Data.setText("05/02/1997");
 		textField_Data.setColumns(10);
 		textField_Data.setBounds(15, 170, 150, 30);
 		textField_Data.addFocusListener(new FocusAdapter() {
@@ -143,11 +143,11 @@ public class MenuCadastro extends JFrame{
 		erroSEXO.setVisible(false);
 		frameCadastro.getContentPane().add(erroSEXO);
 
-		/*Botao de Enviar para dar salvar cadastro*/
+		/*Botao de Enviar para dar save no cadastro*/
 		JButton buttonOk = new JButton("Enviar");
 		buttonOk.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				boolean statusValidacao = false;
+				boolean statusNome = false,statusCPF = false,statusData = false, statusSexo = false;
 
 				/*Obtendo os valores*/
 				setNomePessoa(textField_Nome.getText().trim());
@@ -160,47 +160,45 @@ public class MenuCadastro extends JFrame{
 				
 				/*VALIDA NOME*/
 				if(Validacao.validaNome(nomePessoa) == false){
-					statusValidacao = false;
+					statusNome = false;
 					erroNome.setVisible(true);
 				}
 				else if(Validacao.validaNome(nomePessoa)){
 					erroNome.setVisible(false);
-					statusValidacao = true;
+					statusNome = true;
 				}
 				/*VALIDA CPF*/
-				if(Validacao.validaCPF(numCPF) == false){
-					statusValidacao = false;
+				if(!Validacao.validaCPF(numCPF) || !Validacao.checkDuplicidadeCPF(conjuntoPessoas, numCPF)){
+					statusCPF = false;
 					erroCPF.setVisible(true);
 				}
-				else if(Validacao.validaCPF(numCPF)){
+				else if(Validacao.validaCPF(numCPF) && Validacao.checkDuplicidadeCPF(conjuntoPessoas, numCPF)){
 					erroCPF.setVisible(false);
-					statusValidacao = true;
+					statusCPF = true;
 				}
 				/*VALIDA DATA*/
 				if(Validacao.validaData(dataNascimento) == false){
-					statusValidacao = false;
+					statusData = false;
 					erroDATA.setVisible(true);
 				}
 				else if(Validacao.validaData(dataNascimento)){
-					statusValidacao = true;
+					statusData = true;
 					erroDATA.setVisible(false);
 				}
 				/*VALIDA SEXO*/
 				if(!buttonFeminino.isSelected() &&  !buttonMasculino.isSelected()){
-					statusValidacao = false;
+					statusSexo = false;
 					erroSEXO.setVisible(true);
 				}
 				else if(buttonFeminino.isSelected() || buttonMasculino.isSelected()){
-					statusValidacao = true;
+					statusSexo = true;
 					erroSEXO.setVisible(false);
 				}
 				
 				/*Menu maior ou menor de idade*/
-				if(statusValidacao == true){
+				if(statusNome == true && statusCPF == true && statusData == true && statusSexo == true){
 					String yearSubstring = dataNascimento.substring(6);
 					Integer ano = Integer.parseInt(yearSubstring);
-					boolean foiVacinada;
-					Integer quantVacinas;
 					if(2016-ano >= 18){
 						/*Se for maior de idade*/
 						frameCadastro.setVisible(false);

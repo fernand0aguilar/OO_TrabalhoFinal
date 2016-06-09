@@ -1,8 +1,8 @@
 package dados;
 
-import java.util.ArrayList;
-
 import interface_programa.ChavePessoa;
+
+import java.util.ArrayList;
 
 public abstract class Pessoa implements ChavePessoa {
 	private String nome;
@@ -16,7 +16,6 @@ public abstract class Pessoa implements ChavePessoa {
 		setNumCPF(numCPF);
 		setDataNascimento(dataNascimento);
 	}
-	
 	public String getNome() {
 		return nome;
 	}
@@ -38,13 +37,19 @@ public abstract class Pessoa implements ChavePessoa {
 	public String getDataNascimento() {
 		return dataNascimento;
 	}
-
 	public void setDataNascimento(String dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 	
-	public boolean checkDuplicidadeCPF(ArrayList<Pessoa> totalPessoas) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean checkDuplicidadeCPF(ArrayList<Pessoa> totalPessoas, String numCPF) {
+		boolean statusValida = true;
+		
+		for(int cont=0; cont<totalPessoas.size();cont++){
+			if(totalPessoas.get(cont).getNumCPF().equals(numCPF)){
+				statusValida=false;
+				cont=0;
+			}
+		}
+		return statusValida;
 	}
 }

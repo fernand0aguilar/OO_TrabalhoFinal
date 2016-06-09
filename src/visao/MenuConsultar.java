@@ -15,6 +15,8 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
 import javax.swing.ImageIcon;
 
 import servicos.Validacao;
@@ -28,14 +30,14 @@ public class MenuConsultar extends JFrame{
 	private JLabel labelErroCPF;
 
 	
-	public MenuConsultar() {
-		criaMenuConsultar();
+	public MenuConsultar(ArrayList<Pessoa> conjuntoPessoas) {
+		criaMenuConsultar(conjuntoPessoas);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void criaMenuConsultar() {
+	private void criaMenuConsultar(ArrayList<Pessoa> conjuntoPessoas) {
 		frameMenuConsultar = new JFrame();
 		frameMenuConsultar.setFont(new Font("Century Schoolbook L", Font.PLAIN, 12));
 		frameMenuConsultar.setTitle("Consultar uma pessoa via CPF");

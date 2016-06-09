@@ -3,8 +3,11 @@ package servicos;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.InputMismatchException;
+
+import dados.Pessoa;
 
 public class Validacao {
 	
@@ -23,8 +26,12 @@ public class Validacao {
 		DateFormat validadorData = new SimpleDateFormat("dd/MM/yyyy");
 		validadorData.setLenient(false); 
 		/*false - Nao tolerante a erros*/
+		String yearSubstring = data.substring(6);
+		Integer ano = Integer.parseInt(yearSubstring);
 		try{
 			validadorData.parse(data);
+			if(ano > 2016)
+				return false;
 			return true;
 		}
 		catch(ParseException erro){
@@ -85,5 +92,16 @@ public class Validacao {
 		catch(InputMismatchException erro){
 			return (false);
 		}
+	}
+	public static boolean checkDuplicidadeCPF(ArrayList<Pessoa> totalPessoas, String numCPF) {
+		boolean statusValida = true;
+		
+		for(int cont=0; cont<totalPessoas.size();cont++){
+			if(totalPessoas.get(cont).getNumCPF().equals(numCPF)){
+				statusValida=false;
+				cont=0;
+			}
+		}
+		return statusValida;
 	}
 }

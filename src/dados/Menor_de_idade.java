@@ -17,6 +17,7 @@ public class Menor_de_idade extends Pessoa{
 	public void setQuantVacinas(Integer quantVacinas) {
 		this.quantVacinas = quantVacinas;
 	}
+	
 	public String toString(){
 		String sexoCompleto;
 		String foiVacinadaAUX;
