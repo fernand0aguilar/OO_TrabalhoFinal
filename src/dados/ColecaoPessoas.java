@@ -1,15 +1,15 @@
 package dados;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 public class ColecaoPessoas {
-	private Vector<Pessoa> pessoas;
+	private ArrayList<Pessoa> pessoas;
 	
 	public ColecaoPessoas(){
-		this.pessoas = new Vector<Pessoa>();
+		this.pessoas = new ArrayList<Pessoa>();
 	}
 
-	public Vector<Pessoa> getPessoas() {
+	public ArrayList<Pessoa> getPessoas() {
 		return pessoas;
 	}
 

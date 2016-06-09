@@ -12,23 +12,29 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
+import javax.swing.JFrame;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.JLabel;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
-public class MenuInicio {
+import dados.ColecaoPessoas;
+import dados.Pessoa;
+
+public class MenuInicio extends JFrame{
 
 	private JFrame frameMenuInicio;
 	
 	/*Metodo construtor MenuInicio()*/
-	public MenuInicio() {
-		menuInicio();
+	public MenuInicio(ArrayList<Pessoa> conjuntoPessoas) {
+		criaMenuInicio(conjuntoPessoas);
 	}
 
 	/*Inicializa o frame e seus conteudos*/
-	private void menuInicio() {
+	private void criaMenuInicio(final ArrayList<Pessoa> conjuntoPessoas) {
 
 		frameMenuInicio = new JFrame();
 		frameMenuInicio.setBounds(270, 250, 810, 150);
@@ -42,7 +48,7 @@ public class MenuInicio {
 		buttonCadastro.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				frameMenuInicio.setVisible(false);
-				new MenuCadastro();
+				new MenuCadastro(conjuntoPessoas);
 			}
 		});
 		buttonCadastro.setBounds(30, 50, 126, 32);
@@ -50,6 +56,11 @@ public class MenuInicio {
 		
 		/*Botao Listagem todos os cadastros*/
 		JButton buttonListagem = new JButton("Listar");
+		buttonListagem.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				Visao.mostraDados(conjuntoPessoas);
+			}
+		});
 		buttonListagem.setBounds(186, 50, 126, 32);
 		frameMenuInicio.getContentPane().add(buttonListagem);
 		

@@ -2,6 +2,8 @@ package principal;
 
 import java.awt.*;
 
+import dados.ColecaoPessoas;
+
 import visao.*;;
 
 public class Principal {
@@ -10,7 +12,8 @@ public class Principal {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MenuInicio window = new MenuInicio();
+					ColecaoPessoas conjuntoPessoas = new ColecaoPessoas();
+					MenuInicio window = new MenuInicio(conjuntoPessoas.getPessoas());
 					window.getFrame().setVisible(true);
 				} catch (Exception erro) {
 					erro.printStackTrace();

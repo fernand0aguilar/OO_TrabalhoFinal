@@ -13,26 +13,35 @@ import com.jgoodies.forms.factories.DefaultComponentFactory;
 import dados.ColecaoPessoas;
 import dados.Maior_de_idade;
 import dados.Menor_de_idade;
+import dados.Pessoa;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
-public class MenuCadastro {
+public class MenuCadastro extends JFrame{
 	private static JFrame  frameCadastro;
 	private static JTextField textField_Nome;
 	private static JTextField textField_CPF;
 	private static JTextField textField_Data;
 	
+	/*VARIAVEIS SALVAR*/
+	private static String nomePessoa;
+	private static String numCPF;
+	private static String dataNascimento;
+	private static Character sexo;
+	
 	/*Metodo Construtor da classe*/
-	public MenuCadastro() {
-		menuCadastro();
+	public MenuCadastro(ArrayList<Pessoa> conjuntoPessoas) {
+		criaMenuCadastro(conjuntoPessoas);
 	}
 	
 	/*Inicializacao dos conteudos da frame*/
 	
-	public static void menuCadastro(){
+	public static void criaMenuCadastro(final ArrayList<Pessoa> conjuntoPessoas){
 		/*set da janela de cadastro*/
 		frameCadastro = new JFrame();
 		frameCadastro.setBounds(300, 200, 600, 300);
@@ -139,18 +148,15 @@ public class MenuCadastro {
 		buttonOk.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				boolean statusValidacao = false;
-				ColecaoPessoas colecao = new ColecaoPessoas();
-				String nomePessoa, numCPF, dataNascimento;
-				Character sexo = null;
 
 				/*Obtendo os valores*/
-				nomePessoa = textField_Nome.getText().trim();
-				numCPF = textField_CPF.getText().trim();
-				dataNascimento = textField_Data.getText().trim();
+				setNomePessoa(textField_Nome.getText().trim());
+				setNumCPF(textField_CPF.getText().trim());
+				setDataNascimento(textField_Data.getText().trim());
 				if(buttonFeminino.isSelected())
-					sexo = 'F';
+					setSexo('F');
 				if(buttonMasculino.isSelected())
-					sexo = 'M';
+					setSexo('M');
 				
 				/*VALIDA NOME*/
 				if(Validacao.validaNome(nomePessoa) == false){
@@ -198,23 +204,49 @@ public class MenuCadastro {
 					if(2016-ano >= 18){
 						/*Se for maior de idade*/
 						frameCadastro.setVisible(false);
-						MenuMaiorIdade JanelaMenuMaiorIdade = new MenuMaiorIdade();
-						foiVacinada  = JanelaMenuMaiorIdade.getFoiVacinada();
-						Maior_de_idade pessoaMaior = new Maior_de_idade(nomePessoa, sexo, numCPF, dataNascimento, foiVacinada);
-						colecao.setPessoas(pessoaMaior);
+						MenuMaiorIdade JanelaMenuMaiorIdade = new MenuMaiorIdade(conjuntoPessoas);						
 					}
 					else if(2016-ano <= 18){
 						/*Se for menor de idade*/
 						frameCadastro.setVisible(false);
-						MenuMenorIdade JanelaMenuMenorIdade  = new MenuMenorIdade();
-						quantVacinas = JanelaMenuMenorIdade.getQuantVezes();
-						Menor_de_idade pessoaMenor = new Menor_de_idade(nomePessoa, sexo, numCPF, dataNascimento, quantVacinas);
-						colecao.setPessoas(pessoaMenor);						
+						MenuMenorIdade JanelaMenuMenorIdade  = new MenuMenorIdade(conjuntoPessoas);
 					}
 				}
 			}
 		});
 		buttonOk.setBounds(469, 205, 117, 25);
 		frameCadastro.getContentPane().add(buttonOk);
+	}
+
+	public static String getNomePessoa() {
+		return nomePessoa;
+	}
+
+	public static void setNomePessoa(String nomePessoa) {
+		MenuCadastro.nomePessoa = nomePessoa;
+	}
+
+	public static String getNumCPF() {
+		return numCPF;
+	}
+
+	public static void setNumCPF(String numCPF) {
+		MenuCadastro.numCPF = numCPF;
+	}
+
+	public static String getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public static void setDataNascimento(String dataNascimento) {
+		MenuCadastro.dataNascimento = dataNascimento;
+	}
+
+	public static Character getSexo() {
+		return sexo;
+	}
+
+	public static void setSexo(Character sexo) {
+		MenuCadastro.sexo = sexo;
 	}
 }

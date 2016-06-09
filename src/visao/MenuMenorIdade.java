@@ -8,6 +8,8 @@ package visao;
 import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.Vector;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
@@ -17,18 +19,21 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-public class MenuMenorIdade {
+import dados.Menor_de_idade;
+import dados.Pessoa;
+
+public class MenuMenorIdade extends JFrame{
 
 	private JFrame framQuantVezes;
 	private Integer quantVezes;
 	
 	/*Metodo Construtor*/
-	public MenuMenorIdade() {
-		menuMenorIdade();
+	public MenuMenorIdade(ArrayList<Pessoa> conjuntoPessoas) {
+		criaMenuMenorIdade(conjuntoPessoas);
 	}
 	
 	/*Inicializa o frame e seus conteudos*/
-	private void menuMenorIdade() {
+	private void criaMenuMenorIdade(final ArrayList<Pessoa> conjuntoPessoas) {
 		framQuantVezes = new JFrame();
 		framQuantVezes.setTitle("Quantas vezes a pessoa ja foi vacinada contra H1N1?");
 		framQuantVezes.setBounds(270, 250, 450, 100);
@@ -67,10 +72,13 @@ public class MenuMenorIdade {
 					labelErroSelect.setVisible(false);
 					status = true;
 				}
-				if(status){
+				if(status == true){
 					setQuantVezes(quantVezes);
+					Menor_de_idade pessoaMenor = new Menor_de_idade(MenuCadastro.getNomePessoa(), MenuCadastro.getSexo(), MenuCadastro.getNumCPF(), MenuCadastro.getDataNascimento(), getQuantVezes());
+					conjuntoPessoas.add(pessoaMenor);	
 					framQuantVezes.setVisible(false);
 					JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso", "Cadastro", JOptionPane.INFORMATION_MESSAGE);
+					new MenuInicio(conjuntoPessoas);
 				}
 			}
 		});

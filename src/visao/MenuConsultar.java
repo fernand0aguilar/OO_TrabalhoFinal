@@ -7,6 +7,10 @@ import java.awt.event.FocusEvent;
 
 import javax.swing.JLabel;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
+
+import dados.ColecaoPessoas;
+import dados.Pessoa;
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
@@ -15,7 +19,7 @@ import javax.swing.ImageIcon;
 
 import servicos.Validacao;
 
-public class MenuConsultar {
+public class MenuConsultar extends JFrame{
 
 	private JFrame frameMenuConsultar;
 	private JTextField textFieldCPF;
@@ -25,13 +29,13 @@ public class MenuConsultar {
 
 	
 	public MenuConsultar() {
-		menuConsultar();
+		criaMenuConsultar();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void menuConsultar() {
+	private void criaMenuConsultar() {
 		frameMenuConsultar = new JFrame();
 		frameMenuConsultar.setFont(new Font("Century Schoolbook L", Font.PLAIN, 12));
 		frameMenuConsultar.setTitle("Consultar uma pessoa via CPF");
@@ -72,7 +76,7 @@ public class MenuConsultar {
 					status = true;
 				}
 				if(status == true){
-					
+					/*TODO CREATE JOPTIONPANE*/ 
 				}
 				
 			}

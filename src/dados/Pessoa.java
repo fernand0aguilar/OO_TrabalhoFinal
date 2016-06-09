@@ -1,6 +1,10 @@
 package dados;
 
-public class Pessoa {
+import java.util.ArrayList;
+
+import interface_programa.ChavePessoa;
+
+public abstract class Pessoa implements ChavePessoa {
 	private String nome;
 	private Character sexo;
 	private String dataNascimento;
@@ -37,5 +41,10 @@ public class Pessoa {
 
 	public void setDataNascimento(String dataNascimento) {
 		this.dataNascimento = dataNascimento;
+	}
+	
+	public boolean checkDuplicidadeCPF(ArrayList<Pessoa> totalPessoas) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }
