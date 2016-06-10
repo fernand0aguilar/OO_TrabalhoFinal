@@ -212,8 +212,18 @@ public class MenuCadastro extends JFrame{
 				}
 			}
 		});
-		buttonOk.setBounds(469, 205, 117, 25);
+		buttonOk.setBounds(350, 200, 120, 25);
 		frameCadastro.getContentPane().add(buttonOk);
+		
+		JButton btnSair = new JButton("Sair");
+		btnSair.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				frameCadastro.setVisible(false);
+				MenuInicio janelaMenuInicial = new MenuInicio(conjuntoPessoas);
+			}
+		});
+		btnSair.setBounds(480, 200, 100, 25);
+		frameCadastro.getContentPane().add(btnSair);
 	}
 
 	public static String getNomePessoa() {

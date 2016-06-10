@@ -11,6 +11,7 @@ import com.jgoodies.forms.factories.DefaultComponentFactory;
 import dados.ColecaoPessoas;
 import dados.Pessoa;
 
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
@@ -26,7 +27,7 @@ public class MenuConsultar extends JFrame{
 	private JFrame frameMenuConsultar;
 	private JTextField textFieldCPF;
 	private JButton btnConsultar;
-	private JButton btnLimpar;
+	private JButton btnSair;
 	private JLabel labelErroCPF;
 
 	
@@ -37,7 +38,7 @@ public class MenuConsultar extends JFrame{
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void criaMenuConsultar(ArrayList<Pessoa> conjuntoPessoas) {
+	private void criaMenuConsultar(final ArrayList<Pessoa> conjuntoPessoas) {
 		frameMenuConsultar = new JFrame();
 		frameMenuConsultar.setFont(new Font("Century Schoolbook L", Font.PLAIN, 12));
 		frameMenuConsultar.setTitle("Consultar uma pessoa via CPF");
@@ -78,7 +79,18 @@ public class MenuConsultar extends JFrame{
 					status = true;
 				}
 				if(status == true){
-					/*TODO CREATE JOPTIONPANE*/ 
+					boolean statusPesquisa = false;
+					for(int aux = 0; aux<conjuntoPessoas.size(); aux++){
+						Pessoa pessoa = conjuntoPessoas.get(aux);
+						if(pessoa.getNumCPF().equals(numCPF)){
+							statusPesquisa = true;
+							String mensagem = "Nome: " + pessoa.getNome() + "\nData de Nacimento: " + pessoa.getDataNascimento() + "\nCPF:" + pessoa.getNumCPF() + "\nSexo: " + pessoa.getSexo();
+							JOptionPane.showMessageDialog(null, mensagem, pessoa.getNome(),JOptionPane.INFORMATION_MESSAGE, null);
+						}
+					}
+					if(statusPesquisa == false){
+						JOptionPane.showMessageDialog(null, "Nenhum registro existente com este CPF");
+					}
 				}
 				
 			}
@@ -86,14 +98,15 @@ public class MenuConsultar extends JFrame{
 		btnConsultar.setBounds(198, 102, 117, 25);
 		frameMenuConsultar.getContentPane().add(btnConsultar);
 		
-		btnLimpar = new JButton("Limpar");
-		btnLimpar.addMouseListener(new MouseAdapter() {
+		btnSair = new JButton("Sair");
+		btnSair.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				textFieldCPF.setText("");
+				frameMenuConsultar.setVisible(false);
+				MenuInicio janelaMenuInicial = new MenuInicio(conjuntoPessoas);
 			}
 		});
-		btnLimpar.setBounds(331, 102, 82, 25);
-		frameMenuConsultar.getContentPane().add(btnLimpar);
+		btnSair.setBounds(331, 102, 82, 25);
+		frameMenuConsultar.getContentPane().add(btnSair);
 		
 		labelErroCPF = new JLabel("Favor informar um CPF válido e existente.");
 		labelErroCPF.setVisible(false);
