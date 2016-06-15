@@ -26,33 +26,34 @@ import dados.Pessoa;
 
 public class MenuInicio extends JFrame{
 
-	private JFrame frameMenuInicio;
-	
+	private MenuPesquisar janelaMenuPesquisar;
 	/*Metodo construtor MenuInicio()*/
+	
 	public MenuInicio(ArrayList<Pessoa> conjuntoPessoas) {
+		super("Registro de vacinacao H1N1");
 		criaMenuInicio(conjuntoPessoas);
 	}
 
 	/*Inicializa o frame e seus conteudos*/
 	private void criaMenuInicio(final ArrayList<Pessoa> conjuntoPessoas) {
 
-		frameMenuInicio = new JFrame();
-		frameMenuInicio.setBounds(270, 250, 810, 150);
-		frameMenuInicio.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frameMenuInicio.setTitle("Registro de vacinacao H1N1");
-		frameMenuInicio.getContentPane().setLayout(null);
-		frameMenuInicio.setVisible(true);
+		
+		setBounds(270, 250, 210, 326);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setTitle("Registro de vacinacao H1N1");
+		getContentPane().setLayout(null);
+		setVisible(true);
 		
 		/*Botao Cadastrar*/
 		JButton buttonCadastro = new JButton("Cadastrar");
 		buttonCadastro.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				frameMenuInicio.setVisible(false);
+				setVisible(false);
 				new MenuCadastro(conjuntoPessoas);
 			}
 		});
 		buttonCadastro.setBounds(30, 50, 126, 32);
-		frameMenuInicio.getContentPane().add(buttonCadastro);
+		getContentPane().add(buttonCadastro);
 		
 		/*Botao Listagem todos os cadastros*/
 		JButton buttonListagem = new JButton("Listar");
@@ -61,30 +62,31 @@ public class MenuInicio extends JFrame{
 				Visao.mostraDados(conjuntoPessoas);
 			}
 		});
-		buttonListagem.setBounds(186, 50, 126, 32);
-		frameMenuInicio.getContentPane().add(buttonListagem);
+		buttonListagem.setBounds(30, 94, 126, 32);
+		getContentPane().add(buttonListagem);
 		
 		/*Botao Consultar via CPF*/
 		JButton buttonConsultar = new JButton("Consultar");
-		buttonConsultar.setBounds(342, 50, 126, 32);
+		buttonConsultar.setBounds(30, 138, 126, 32);
 		buttonConsultar.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				frameMenuInicio.setVisible(false);
+				setVisible(false);
 				MenuConsultar janelaMenuConsultar = new MenuConsultar(conjuntoPessoas);
 			}
 		});
-		frameMenuInicio.getContentPane().add(buttonConsultar);
+		getContentPane().add(buttonConsultar);
 		
 		/*Botao Pesquisar via nome*/
 		JButton buttonPesquisar = new JButton("Pesquisar");
 		buttonPesquisar.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				frameMenuInicio.setVisible(false);
-				MenuPesquisar janeMenuPesquisar = new MenuPesquisar(conjuntoPessoas);
+//				frameMenuInicio.setVisible(false);
+				janelaMenuPesquisar = new MenuPesquisar(conjuntoPessoas);
+				janelaMenuPesquisar.setVisible(true);
 			}
 		});
-		buttonPesquisar.setBounds(498, 50, 126, 32);
-		frameMenuInicio.getContentPane().add(buttonPesquisar);
+		buttonPesquisar.setBounds(30, 187, 126, 32);
+		getContentPane().add(buttonPesquisar);
 		
 		/*Botao Sair da aplicacao*/
 		JButton buttonSair = new JButton("Sair");
@@ -93,20 +95,13 @@ public class MenuInicio extends JFrame{
 				System.exit(0);
 			}
 		});
-		buttonSair.setBounds(654, 50, 126, 32);
-		frameMenuInicio.getContentPane().add(buttonSair);
+		buttonSair.setBounds(30, 231, 126, 32);
+		getContentPane().add(buttonSair);
 		
 		/*Label Titulo*/
 		JLabel labelOpcao = DefaultComponentFactory.getInstance().createTitle("Escolha uma opção: ");
 		labelOpcao.setBounds(12, 0, 300, 15);
-		frameMenuInicio.getContentPane().add(labelOpcao);
+		getContentPane().add(labelOpcao);
 	}
 	
-	public JFrame getFrame() {
-		return this.frameMenuInicio;
-	}
-
-	public void setFrame(JFrame frame) {
-		this.frameMenuInicio = frame;
-	}
 }

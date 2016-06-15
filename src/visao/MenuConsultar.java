@@ -24,7 +24,6 @@ import servicos.Validacao;
 
 public class MenuConsultar extends JFrame{
 
-	private JFrame frameMenuConsultar;
 	private JTextField textFieldCPF;
 	private JButton btnConsultar;
 	private JButton btnSair;
@@ -39,25 +38,24 @@ public class MenuConsultar extends JFrame{
 	 * Initialize the contents of the frame.
 	 */
 	private void criaMenuConsultar(final ArrayList<Pessoa> conjuntoPessoas) {
-		frameMenuConsultar = new JFrame();
-		frameMenuConsultar.setFont(new Font("Century Schoolbook L", Font.PLAIN, 12));
-		frameMenuConsultar.setTitle("Consultar uma pessoa via CPF");
-		frameMenuConsultar.setBounds(100, 100, 450, 200);
-		frameMenuConsultar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frameMenuConsultar.getContentPane().setLayout(null);
-		frameMenuConsultar.setVisible(true);
+		setFont(new Font("Century Schoolbook L", Font.PLAIN, 12));
+		setTitle("Consultar uma pessoa via CPF");
+		setBounds(100, 100, 450, 200);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		getContentPane().setLayout(null);
+		setVisible(true);
 		
 		JLabel titleTitulocpf = DefaultComponentFactory.getInstance().createTitle("Preencha o campo abaixo com o dado solicitado.");
 		titleTitulocpf.setBounds(12, 0, 398, 50);
-		frameMenuConsultar.getContentPane().add(titleTitulocpf);
+		getContentPane().add(titleTitulocpf);
 		
 		JLabel labelCPF = DefaultComponentFactory.getInstance().createLabel("CPF: ");
 		labelCPF.setBounds(12, 80, 130, 15);
-		frameMenuConsultar.getContentPane().add(labelCPF);
+		getContentPane().add(labelCPF);
 		textFieldCPF = new JTextField();
 		textFieldCPF.setText("###.###.###-##");
 		textFieldCPF.setBounds(12, 100, 150, 30);
-		frameMenuConsultar.getContentPane().add(textFieldCPF);
+		getContentPane().add(textFieldCPF);
 		textFieldCPF.addFocusListener(new FocusAdapter() {
 			public void focusGained(FocusEvent e) {
 				textFieldCPF.setText("");
@@ -96,23 +94,23 @@ public class MenuConsultar extends JFrame{
 			}
 		});
 		btnConsultar.setBounds(198, 102, 117, 25);
-		frameMenuConsultar.getContentPane().add(btnConsultar);
+		getContentPane().add(btnConsultar);
 		
 		btnSair = new JButton("Sair");
 		btnSair.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				frameMenuConsultar.setVisible(false);
+				setVisible(false);
 				MenuInicio janelaMenuInicial = new MenuInicio(conjuntoPessoas);
 			}
 		});
 		btnSair.setBounds(331, 102, 82, 25);
-		frameMenuConsultar.getContentPane().add(btnSair);
+		getContentPane().add(btnSair);
 		
 		labelErroCPF = new JLabel("Favor informar um CPF válido e existente.");
 		labelErroCPF.setVisible(false);
 		labelErroCPF.setIcon(new ImageIcon(MenuConsultar.class.getResource("/com/sun/java/swing/plaf/windows/icons/Error.gif")));
 		labelErroCPF.setBounds(22, 133, 400, 30);
-		frameMenuConsultar.getContentPane().add(labelErroCPF);
+		getContentPane().add(labelErroCPF);
 
 	}
 }

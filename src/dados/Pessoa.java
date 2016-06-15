@@ -4,35 +4,36 @@ import interface_programa.ChavePessoa;
 
 import java.util.ArrayList;
 
-public abstract class Pessoa implements ChavePessoa {
+public abstract class Pessoa implements ChavePessoa, Comparable<Pessoa>{
 	private String nome;
-	private Character sexo;
+	private String sexo;
 	private String dataNascimento;
 	private String numCPF;
 	
-	public Pessoa(String nome, Character sexo,String numCPF, String dataNascimento){
+	public Pessoa(String nome, String sexo,String numCPF, String dataNascimento){
 		setNome(nome);
 		setSexo(sexo);
 		setNumCPF(numCPF);
 		setDataNascimento(dataNascimento);
 	}
+	
 	public String getNome() {
 		return nome;
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public Character getSexo() {
+	public String getSexo() {
 		return sexo;
 	}
-	public void setSexo(Character sexo) {
+	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
 	public String getNumCPF() {
 		return numCPF;
 	}
-	public void setNumCPF(String numCPF2) {
-		this.numCPF = numCPF2;
+	public void setNumCPF(String numCPF) {
+		this.numCPF = numCPF;
 	}
 	public String getDataNascimento() {
 		return dataNascimento;
@@ -51,5 +52,9 @@ public abstract class Pessoa implements ChavePessoa {
 			}
 		}
 		return statusValida;
+	}
+	public int compareTo(Pessoa pessoa){
+		
+		return getNome().toString().toLowerCase().trim().compareTo(pessoa.getNome().toString().trim().toLowerCase()); 
 	}
 }

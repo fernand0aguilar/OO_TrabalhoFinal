@@ -24,22 +24,20 @@ import dados.Pessoa;
 
 public class MenuMenorIdade extends JFrame{
 
-	private JFrame framQuantVezes;
 	private Integer quantVezes;
 	
 	/*Metodo Construtor*/
-	public MenuMenorIdade(ArrayList<Pessoa> conjuntoPessoas) {
-		criaMenuMenorIdade(conjuntoPessoas);
+	public MenuMenorIdade(ArrayList<Pessoa> conjuntoPessoas, String nomePessoa,String sexo, String numCPF, String dataNascimento) {
+		criaMenuMenorIdade(conjuntoPessoas, nomePessoa, sexo, numCPF, dataNascimento);
 	}
 	
 	/*Inicializa o frame e seus conteudos*/
-	private void criaMenuMenorIdade(final ArrayList<Pessoa> conjuntoPessoas) {
-		framQuantVezes = new JFrame();
-		framQuantVezes.setTitle("Quantas vezes a pessoa ja foi vacinada contra H1N1?");
-		framQuantVezes.setBounds(270, 250, 450, 100);
-		framQuantVezes.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		framQuantVezes.getContentPane().setLayout(null);
-		framQuantVezes.setVisible(true);
+	private void criaMenuMenorIdade(final ArrayList<Pessoa> conjuntoPessoas,final String nomePessoa, final String sexo, final String numCPF, final String dataNascimento) {
+		setTitle("Quantas vezes a pessoa ja foi vacinada contra H1N1?");
+		setBounds(270, 250, 450, 100);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		getContentPane().setLayout(null);
+		setVisible(true);
 		
 		/*Box com os valores a selecionar*/
 		final JComboBox boxValores = new JComboBox();
@@ -48,14 +46,14 @@ public class MenuMenorIdade extends JFrame{
 		boxValores.setModel(new DefaultComboBoxModel(new Integer[] {null,0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}));
 		boxValores.setMaximumRowCount(25);
 		boxValores.setBounds(138, 12, 59, 24);
-		framQuantVezes.getContentPane().add(boxValores);
+		getContentPane().add(boxValores);
 		
 		/*Label Erro casa nenhum selecionado*/
 		final JLabel labelErroSelect = new JLabel("");
 		labelErroSelect.setToolTipText("Campo obrigatorio, favor selecionar um valor.");
 		labelErroSelect.setIcon(new ImageIcon(MenuMenorIdade.class.getResource("/com/sun/java/swing/plaf/motif/icons/Error.gif")));
 		labelErroSelect.setBounds(107, 12, 70, 20);
-		framQuantVezes.getContentPane().add(labelErroSelect);
+		getContentPane().add(labelErroSelect);
 		labelErroSelect.setVisible(false);
 		
 		/*Botao 'Ok' para enviar os dados*/
@@ -74,16 +72,16 @@ public class MenuMenorIdade extends JFrame{
 				}
 				if(status == true){
 					setQuantVezes(quantVezes);
-					Menor_de_idade pessoaMenor = new Menor_de_idade(MenuCadastro.getNomePessoa(), MenuCadastro.getSexo(), MenuCadastro.getNumCPF(), MenuCadastro.getDataNascimento(), getQuantVezes());
+					Menor_de_idade pessoaMenor = new Menor_de_idade(nomePessoa, sexo, numCPF, dataNascimento, getQuantVezes());
 					conjuntoPessoas.add(pessoaMenor);	
-					framQuantVezes.setVisible(false);
+					setVisible(false);
 					JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso", "Cadastro", JOptionPane.INFORMATION_MESSAGE);
 					new MenuInicio(conjuntoPessoas);
 				}
 			}
 		});
 		buttonOk.setBounds(233, 12, 117, 25);
-		framQuantVezes.getContentPane().add(buttonOk);
+		getContentPane().add(buttonOk);
 
 
 	}
