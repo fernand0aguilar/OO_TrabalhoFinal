@@ -89,6 +89,7 @@ public class MenuPesquisar extends JDialog {
 		btnPesquisarNovamente.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				MenuFormularioPesquisar newSearch = new MenuFormularioPesquisar(conjuntoPessoas);
+				newSearch.setVisible(true);
 				setVisible(false);
 			}
 		});
@@ -96,6 +97,11 @@ public class MenuPesquisar extends JDialog {
 		painelTabela.add(btnPesquisarNovamente);
 		
 		JButton btnSair = new JButton("Cancelar");
+		btnSair.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				setVisible(false);
+			}
+		});
 		btnSair.setBounds(330, 220, 150, 50);
 		painelTabela.add(btnSair);
 	}

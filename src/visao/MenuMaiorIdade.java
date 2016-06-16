@@ -10,7 +10,7 @@ import java.awt.FlowLayout;
 import javax.swing.JButton;
 
 import dados.ColecaoPessoas;
-import dados.Maior_de_idade;
+import dados.PessoaMaiorIdade;
 import dados.Pessoa;
 
 import java.awt.event.MouseAdapter;
@@ -39,7 +39,7 @@ public class MenuMaiorIdade extends JFrame{
 			public void mouseClicked(MouseEvent e) {
 				/*Se o botao for clicado com o mouse no botao SIM*/
 				setFoiVacinada(true);
-				Maior_de_idade pessoaMaior = new Maior_de_idade(nomePessoa, sexo, numCPF, dataNascimento, foiVacinada);
+				PessoaMaiorIdade pessoaMaior = new PessoaMaiorIdade(nomePessoa, sexo, numCPF, dataNascimento, foiVacinada);
 				conjuntoPessoas.add(pessoaMaior);
 				setVisible(false);
 				JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso", "Cadastro", JOptionPane.INFORMATION_MESSAGE);
@@ -53,7 +53,7 @@ public class MenuMaiorIdade extends JFrame{
 			public void mouseClicked(MouseEvent e) {
 				/*Se o botao for clicado com o mouse no botao NAO*/
 				setFoiVacinada(false);
-				Maior_de_idade pessoaMaior = new Maior_de_idade(nomePessoa, sexo, numCPF, dataNascimento, getFoiVacinada());
+				PessoaMaiorIdade pessoaMaior = new PessoaMaiorIdade(nomePessoa, sexo, numCPF, dataNascimento, getFoiVacinada());
 				conjuntoPessoas.add(pessoaMaior);
 				setVisible(false);
 				JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso", "Cadastro", JOptionPane.INFORMATION_MESSAGE);

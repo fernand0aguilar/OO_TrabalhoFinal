@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.InputMismatchException;
 
+import javax.swing.JOptionPane;
+
 import visao.Visao;
 
 import dados.Pessoa;
@@ -96,10 +98,10 @@ public class Validacao {
 	}
 	public static boolean checkDuplicidadeCPF(ArrayList<Pessoa> totalPessoas, String numCPF) {
 		boolean statusValida = true;
-		
 		for(int cont=0; cont<totalPessoas.size();cont++){
 			if(totalPessoas.get(cont).getNumCPF().equals(numCPF)){
 				statusValida=false;
+				JOptionPane.showMessageDialog(null,"O CPF inserido já está cadastrado no sistema.", "Erro", JOptionPane.ERROR_MESSAGE);
 				cont=0;
 			}
 		}

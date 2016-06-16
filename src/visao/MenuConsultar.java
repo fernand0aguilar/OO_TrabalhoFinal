@@ -6,9 +6,7 @@ import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 
 import javax.swing.JLabel;
-import com.jgoodies.forms.factories.DefaultComponentFactory;
 
-import dados.ColecaoPessoas;
 import dados.Pessoa;
 
 import javax.swing.JOptionPane;
@@ -45,11 +43,11 @@ public class MenuConsultar extends JFrame{
 		getContentPane().setLayout(null);
 		setVisible(true);
 		
-		JLabel titleTitulocpf = DefaultComponentFactory.getInstance().createTitle("Preencha o campo abaixo com o dado solicitado.");
+		JLabel titleTitulocpf = new JLabel("Preencha o campo abaixo com o dado solicitado.");
 		titleTitulocpf.setBounds(12, 0, 398, 50);
 		getContentPane().add(titleTitulocpf);
 		
-		JLabel labelCPF = DefaultComponentFactory.getInstance().createLabel("CPF: ");
+		JLabel labelCPF = new JLabel("CPF: ");
 		labelCPF.setBounds(12, 80, 130, 15);
 		getContentPane().add(labelCPF);
 		textFieldCPF = new JTextField();

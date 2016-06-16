@@ -8,18 +8,17 @@ package visao;
 import javax.swing.*;
 
 import servicos.Validacao;
-import com.jgoodies.forms.factories.DefaultComponentFactory;
 
-import dados.ColecaoPessoas;
-import dados.Maior_de_idade;
-import dados.Menor_de_idade;
+
 import dados.Pessoa;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
-import java.lang.reflect.Array;
+
+
+import java.text.*;
 import java.util.ArrayList;
 
 public class MenuCadastro extends JFrame{
@@ -49,13 +48,13 @@ public class MenuCadastro extends JFrame{
 		getContentPane().setLayout(null);
 
 		/*Label inicial*/
-		JLabel tituloCadastroPessoa = DefaultComponentFactory.getInstance().createTitle("Preencha os campos abaixo com os dados solicitados.");
+		JLabel tituloCadastroPessoa = new JLabel("Preencha os campos abaixo com os dados solicitados.");
 		tituloCadastroPessoa.setBounds(15, 0, 400, 30);
 		getContentPane().add(tituloCadastroPessoa);
 
 		/*Set dos fields para realizar cadastro*/
 		/*Field nome*/
-		JLabel labelNome = DefaultComponentFactory.getInstance().createLabel("NOME: ");
+		JLabel labelNome = new JLabel("NOME: ");
 		labelNome.setVerticalAlignment(SwingConstants.TOP);
 		labelNome.setHorizontalAlignment(SwingConstants.RIGHT);
 		labelNome.setToolTipText("Nome da pessoa a ser cadastrada");
@@ -68,11 +67,11 @@ public class MenuCadastro extends JFrame{
 		textField_Nome.setColumns(10);
 
 		/*Field CPF*/
-		JLabel labelCPF = DefaultComponentFactory.getInstance().createLabel("CPF: ");
+		JLabel labelCPF = new JLabel("CPF: ");
 		labelCPF.setBounds(15, 90, 130, 15);
 		getContentPane().add(labelCPF);
 		textField_CPF = new JTextField();
-		textField_CPF.setText("###.###.###-##");
+		textField_CPF.setText("###########");
 		textField_CPF.setBounds(15, 110, 150, 30);
 		getContentPane().add(textField_CPF);
 		textField_CPF.addFocusListener(new FocusAdapter() {
@@ -83,11 +82,14 @@ public class MenuCadastro extends JFrame{
 		textField_CPF.setColumns(10);
 
 		/*Field data nascimento*/
-		JLabel labelData = DefaultComponentFactory.getInstance().createLabel("DATA DE NASCIMENTO: ");
+		JLabel labelData = new JLabel("DATA DE NASCIMENTO: ");
 		labelData.setBounds(15, 150, 170, 15);
 		getContentPane().add(labelData);
+		
+//		DateFormat format = new SimpleDateFormat("your_format");
+//		JFormattedTextField dateTextField = new JFormattedTextField(format);
 		textField_Data = new JTextField();
-
+		
 		textField_Data.setText("DD/MM/AAAA");
 		textField_Data.setColumns(10);
 		textField_Data.setBounds(15, 170, 150, 30);
@@ -99,7 +101,7 @@ public class MenuCadastro extends JFrame{
 		getContentPane().add(textField_Data);
 
 		/*Field sexo*/
-		JLabel labelSexo = DefaultComponentFactory.getInstance().createLabel("SEXO:");
+		JLabel labelSexo = new JLabel("SEXO:");
 		labelSexo.setBounds(15, 210, 130, 15);
 		getContentPane().add(labelSexo);
 		/*botoes de sexo*/
@@ -117,7 +119,7 @@ public class MenuCadastro extends JFrame{
 		grupo.add(buttonMasculino);
 
 		/*labels de erros com icones*/
-		final JLabel erroNome = new JLabel("Favor preencher o campo");
+		final JLabel erroNome = new JLabel("Campo Obrigatório!");
 		erroNome.setToolTipText("Campo de nome vazio");
 		erroNome.setIcon(new ImageIcon(MenuCadastro.class.getResource("/com/sun/java/swing/plaf/motif/icons/Error.gif")));
 		erroNome.setBounds(333, 50, 239, 30);

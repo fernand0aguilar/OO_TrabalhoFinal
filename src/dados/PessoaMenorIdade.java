@@ -2,10 +2,10 @@ package dados;
 
 import java.util.ArrayList;
 
-public class Menor_de_idade extends Pessoa{
+public class PessoaMenorIdade extends Pessoa{
 	private Integer quantVacinas;
 	
-	public Menor_de_idade(String nome, String sexo, String numCPF, String dataNascimento, Integer quantVacinas) {
+	public PessoaMenorIdade(String nome, String sexo, String numCPF, String dataNascimento, Integer quantVacinas) {
 		super(nome, sexo, numCPF, dataNascimento);
 		setQuantVacinas(quantVacinas);
 	}

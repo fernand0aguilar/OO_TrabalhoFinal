@@ -5,8 +5,8 @@ import java.util.List;
 
 import javax.swing.table.DefaultTableModel;
 
-import dados.Maior_de_idade;
-import dados.Menor_de_idade;
+import dados.PessoaMaiorIdade;
+import dados.PessoaMenorIdade;
 import dados.Pessoa;
 
 public class Visao {
@@ -20,6 +20,8 @@ public class Visao {
 		} catch (NumberFormatException erro) {
 			return 0;
 
+		}catch(StringIndexOutOfBoundsException erro){
+			return 0;
 		}
 	}
 
@@ -62,7 +64,7 @@ public class Visao {
 
 
 				if(2016-ano >= 18){
-					if(((Maior_de_idade) novaListaAuxiliar.get(index)).isVacinada()){
+					if(((PessoaMaiorIdade) novaListaAuxiliar.get(index)).isVacinada()){
 						statusIsVacinada = "Sim";
 					}
 					else
@@ -78,10 +80,10 @@ public class Visao {
 							novaListaAuxiliar.get(index).getDataNascimento(),
 							novaListaAuxiliar.get(index).getNumCPF(),
 							String.valueOf(novaListaAuxiliar.get(index).getSexo()),"---",
-							((Menor_de_idade)novaListaAuxiliar.get(index)).getQuantVacinas().toString()});
+							((PessoaMenorIdade)novaListaAuxiliar.get(index)).getQuantVacinas().toString()});
 				}
+				total++;
 			}
-			total++;
 		}
 		return total;
 	}

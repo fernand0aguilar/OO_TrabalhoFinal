@@ -2,7 +2,7 @@ package dados;
 
 import java.util.ArrayList;
 
-public class Maior_de_idade extends Pessoa{
+public class PessoaMaiorIdade extends Pessoa{
 	private boolean vacinada;
 
 	public boolean isVacinada() {
@@ -13,7 +13,7 @@ public class Maior_de_idade extends Pessoa{
 		this.vacinada = foiVacinada;
 	}
 
-	public Maior_de_idade(String nome, String sexo, String numCPF, String dataNascimento, boolean foiVacinada) {
+	public PessoaMaiorIdade(String nome, String sexo, String numCPF, String dataNascimento, boolean foiVacinada) {
 		super(nome, sexo, numCPF, dataNascimento);
 		setFoiVacinada(foiVacinada);
 	}
