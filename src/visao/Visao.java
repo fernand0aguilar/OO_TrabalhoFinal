@@ -13,10 +13,14 @@ public class Visao {
 
 	public static int getAnoStringData(String dataNascimento){
 		String anoSubString;
-		anoSubString = dataNascimento.substring(6);
-		Integer ano = Integer.parseInt(anoSubString);
-		System.out.println("Ano =" + ano);
-		return ano;
+		try {
+			anoSubString = dataNascimento.substring(6);
+			Integer ano = Integer.parseInt(anoSubString);
+			return ano;
+		} catch (NumberFormatException erro) {
+			return 0;
+
+		}
 	}
 
 	public static void mostraDados(ArrayList<Pessoa> conjuntoPessoas){
@@ -55,13 +59,14 @@ public class Visao {
 			if(novaListaAuxiliar.get(index).getNome().toLowerCase().contains(pesquisa.toLowerCase())){
 				ano = getAnoStringData(novaListaAuxiliar.get(index).getDataNascimento());
 				String statusIsVacinada;
-				if(((Maior_de_idade) novaListaAuxiliar.get(index)).isVacinada()){
-					statusIsVacinada = "Sim";
-				}
-				else
-					statusIsVacinada = "Nao";
+
 
 				if(2016-ano >= 18){
+					if(((Maior_de_idade) novaListaAuxiliar.get(index)).isVacinada()){
+						statusIsVacinada = "Sim";
+					}
+					else
+						statusIsVacinada = "Nao";
 					tabelaPesquisadosModel.addRow(new String[]{novaListaAuxiliar.get(index).getNome(),
 							novaListaAuxiliar.get(index).getDataNascimento(),
 							novaListaAuxiliar.get(index).getNumCPF(),

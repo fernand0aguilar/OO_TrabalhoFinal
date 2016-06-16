@@ -34,8 +34,9 @@ public class MenuBoasVindas extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("<html>Cadastro de vacinação contra a gripe A (H1N1)<br/><br/><br/>\n\n <font size=\"4\">Para proseguir pro menu Inicial</font><br/><br/><br/>\n\n<font size= \"5\" color=\"red\"align =center>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CLIQUE AQUI</font></html>");
-		lblNewLabel.setFont(new Font("Serif", Font.PLAIN, 10));
+		JLabel lblNewLabel = new JLabel();
+		lblNewLabel.setText("<html>Cadastro de vacinação contra a gripe A (H1N1)<br/><br/><br/>\n\n <font size=\"4\">Para proseguir pro menu Inicial</font><br/><br/><br/>\n\n<font size= \"5\" color=\"red\"align =center>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CLIQUE AQUI</font></html>");
+//		lblNewLabel.setFont(new Font("Serif", Font.PLAIN, 10));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(280, 122, 242, 172);
 		getContentPane().add(lblNewLabel);
@@ -47,6 +48,7 @@ public class MenuBoasVindas extends JFrame{
 		buttonMenuPrincipal.setBackground(new Color(255, 255, 0));
 		buttonMenuPrincipal.setBounds(280, 122, 242, 172);
 		getContentPane().add(buttonMenuPrincipal);
+		setVisible(true);
 		
 		lblNewLabel.addMouseListener(new MouseAdapter() {
 			@Override
@@ -57,7 +59,7 @@ public class MenuBoasVindas extends JFrame{
 		});
 		
 		JLabel imageH1N1 = new JLabel("");
-		imageH1N1.setIcon(new ImageIcon("/home/Aguilar/UNB/OO/TrabalhoFinal_TF1/Imagens/gripe-H1N1.jpg"));
+		imageH1N1.setIcon(new ImageIcon("/home/Aguilar/UNB/OO/TrabalhoFinal_TF1 (2)/imagens/gripe-H1N1.jpg"));
 		imageH1N1.setBounds(0, 0, 640, 427);
 		getContentPane().add(imageH1N1);
 	}

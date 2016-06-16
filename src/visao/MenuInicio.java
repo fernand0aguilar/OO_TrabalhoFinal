@@ -26,9 +26,7 @@ import dados.Pessoa;
 
 public class MenuInicio extends JFrame{
 
-	private MenuPesquisar janelaMenuPesquisar;
-	/*Metodo construtor MenuInicio()*/
-	
+	/*Metodo construtor MenuInicio()*/	
 	public MenuInicio(ArrayList<Pessoa> conjuntoPessoas) {
 		super("Registro de vacinacao H1N1");
 		criaMenuInicio(conjuntoPessoas);
@@ -80,8 +78,7 @@ public class MenuInicio extends JFrame{
 		JButton buttonPesquisar = new JButton("Pesquisar");
 		buttonPesquisar.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-//				frameMenuInicio.setVisible(false);
-				janelaMenuPesquisar = new MenuPesquisar(conjuntoPessoas);
+				MenuFormularioPesquisar janelaMenuPesquisar = new MenuFormularioPesquisar(conjuntoPessoas);
 				janelaMenuPesquisar.setVisible(true);
 			}
 		});

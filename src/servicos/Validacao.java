@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.InputMismatchException;
 
+import visao.Visao;
+
 import dados.Pessoa;
 
 public class Validacao {
@@ -26,8 +28,7 @@ public class Validacao {
 		DateFormat validadorData = new SimpleDateFormat("dd/MM/yyyy");
 		validadorData.setLenient(false); 
 		/*false - Nao tolerante a erros*/
-		String yearSubstring = data.substring(6);
-		Integer ano = Integer.parseInt(yearSubstring);
+		Integer ano = Visao.getAnoStringData(data);
 		try{
 			validadorData.parse(data);
 			if(ano > 2016)

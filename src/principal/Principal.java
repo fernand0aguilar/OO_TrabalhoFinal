@@ -14,7 +14,6 @@ public class Principal {
 				try {
 					ColecaoPessoas conjuntoPessoas = new ColecaoPessoas();
 					MenuBoasVindas novaJanelaBoasVindas = new MenuBoasVindas(conjuntoPessoas.getPessoas());
-					novaJanelaBoasVindas.getFrameMenuBoasVindas().setVisible(true);
 				} catch (Exception erro) {
 					erro.printStackTrace();
 				}

@@ -1,8 +1,10 @@
 package visao;
 
 import javax.swing.*;
-import javax.swing.border.*;
+
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.List;
 
 import javax.swing.table.*;
@@ -13,27 +15,30 @@ import java.util.*;
 public class MenuPesquisar extends JDialog {
 
 	private JPanel painelTabela;
+	private JPanel painelPesquisa;
 	private JTable tabela;
-
+	private JTextField textFieldNomePesquisar;
+	private JLabel labelNomePesquisar;
 	
-	public MenuPesquisar(ArrayList<Pessoa>variasPessoas,String pesquisa) {
+	public MenuPesquisar(ArrayList<Pessoa>conjuntoPessoas, String pesquisa) {
 		setTitle("Resultados");
-		setModal(true);
-		criaTabela(variasPessoas,pesquisa);
+		criaPainelTabela(conjuntoPessoas,pesquisa);
 	}
-
-	public void criaTabela(final ArrayList<Pessoa>conjuntoPessoas,String pesquisa){
+	
+	public void criaPainelTabela(final ArrayList<Pessoa>conjuntoPessoas,String pesquisa){
 		int total=0;
+		
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 580, 320);
+		getContentPane().setLayout(new BorderLayout(0, 0));
 		painelTabela = new JPanel();
-		painelTabela.setBackground(Color.BLUE);
-		painelTabela.setBorder(new EmptyBorder(5, 5, 5, 5));
+		painelTabela.setBackground(UIManager.getColor("Checkbox.select"));
+		painelTabela.setBorder(UIManager.getBorder("Table.scrollPaneBorder"));
 		setContentPane(painelTabela);
 		painelTabela.setLayout(null);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(23, 30, 385, 145);
+		scrollPane.setBounds(22, 24, 524, 150);
 		painelTabela.add(scrollPane);
 
 		tabela = new JTable();
@@ -43,13 +48,15 @@ public class MenuPesquisar extends JDialog {
 		scrollPane.setViewportView(tabela);
 
 		JLabel lblQtdeMostrados = new JLabel("Quantidade de amostras:");
+		lblQtdeMostrados.setAlignmentY(30.0f);
+		lblQtdeMostrados.setAlignmentX(100.0f);
 		lblQtdeMostrados.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblQtdeMostrados.setBounds(23, 195, 161, 14);
+		lblQtdeMostrados.setBounds(23, 195, 220, 14);
 		painelTabela.add(lblQtdeMostrados);
 
 		JLabel lblValorMostrados = new JLabel("0");
 		lblValorMostrados.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		lblValorMostrados.setBounds(194, 195, 37, 14);
+		lblValorMostrados.setBounds(240, 195, 37, 14);
 		painelTabela.add(lblValorMostrados);
 
 		DefaultTableModel tabelaMdl = new DefaultTableModel(){
@@ -77,12 +84,26 @@ public class MenuPesquisar extends JDialog {
 
 		lblValorMostrados.setText(String.valueOf(total));
 		tabela.setModel(tabelaMdl);
-
+		
+		JButton btnPesquisarNovamente = new JButton("Nova pesquisa");
+		btnPesquisarNovamente.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				MenuFormularioPesquisar newSearch = new MenuFormularioPesquisar(conjuntoPessoas);
+				setVisible(false);
+			}
+		});
+		btnPesquisarNovamente.setBounds(30, 220, 150, 50);
+		painelTabela.add(btnPesquisarNovamente);
+		
+		JButton btnSair = new JButton("Cancelar");
+		btnSair.setBounds(330, 220, 150, 50);
+		painelTabela.add(btnSair);
 	}
 
 	public boolean isCellEditable(int row, int col){
 		return false;
 	}
 }
+
 
 

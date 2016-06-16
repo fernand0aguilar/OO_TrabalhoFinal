@@ -152,9 +152,9 @@ public class MenuCadastro extends JFrame{
 				numCPF = textField_CPF.getText().trim();
 				dataNascimento = textField_Data.getText().trim();
 				if(buttonFeminino.isSelected())
-					sexo = "Masculino";
-				if(buttonMasculino.isSelected())
 					sexo = "Feminino";
+				if(buttonMasculino.isSelected())
+					sexo = "Masculino";
 
 				/*VALIDA NOME*/
 				if(Validacao.validaNome(nomePessoa) == false){
