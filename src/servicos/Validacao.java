@@ -26,7 +26,9 @@ public class Validacao {
 	public static boolean validaData(String data){
 		if (data.isEmpty())
 			return false;
-		
+		if(data.length() != 10){
+			return false;
+		}
 		DateFormat validadorData = new SimpleDateFormat("dd/MM/yyyy");
 		validadorData.setLenient(false); 
 		/*false - Nao tolerante a erros*/

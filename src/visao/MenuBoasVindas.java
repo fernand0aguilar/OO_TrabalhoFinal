@@ -8,6 +8,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
+
 import javax.swing.SwingConstants;
 import javax.swing.JTextPane;
 
@@ -59,7 +61,8 @@ public class MenuBoasVindas extends JFrame{
 		});
 		
 		JLabel imageH1N1 = new JLabel("");
-		imageH1N1.setIcon(new ImageIcon("/home/Aguilar/UNB/OO/TrabalhoFinal_TF1 (2)/imagens/gripe-H1N1.jpg"));
+        ImageIcon icon = new ImageIcon(getClass().getResource("/images/gripeImg1.jpg"));
+		imageH1N1.setIcon(icon);
 		imageH1N1.setBounds(0, 0, 640, 427);
 		getContentPane().add(imageH1N1);
 	}

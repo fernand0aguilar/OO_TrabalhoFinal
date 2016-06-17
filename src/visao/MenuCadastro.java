@@ -12,6 +12,7 @@ import servicos.Validacao;
 
 import dados.Pessoa;
 
+import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.FocusAdapter;
@@ -21,7 +22,7 @@ import java.awt.event.FocusEvent;
 import java.text.*;
 import java.util.ArrayList;
 
-public class MenuCadastro extends JFrame{
+public class MenuCadastro extends JDialog{
 
 	private static JTextField textField_Nome;
 	private static JTextField textField_CPF;
@@ -34,8 +35,7 @@ public class MenuCadastro extends JFrame{
 	private String sexo;
 
 	/*Metodo Construtor da classe*/
-	public MenuCadastro(ArrayList<Pessoa> conjuntoPessoas) {
-		super("Cadastro de um novo registro de vacinacao");
+	public MenuCadastro(ArrayList<Pessoa> conjuntoPessoas){
 		criaMenuCadastro(conjuntoPessoas);
 	}
 
@@ -44,9 +44,9 @@ public class MenuCadastro extends JFrame{
 	public void criaMenuCadastro(final ArrayList<Pessoa> conjuntoPessoas){
 		/*set da janela de cadastro*/
 		setBounds(300, 200, 600, 300);
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		getContentPane().setBackground(new Color(242,250,251));
 		getContentPane().setLayout(null);
-
+		setTitle("Cadastro de um novo registro de vacinação");
 		/*Label inicial*/
 		JLabel tituloCadastroPessoa = new JLabel("Preencha os campos abaixo com os dados solicitados.");
 		tituloCadastroPessoa.setBounds(15, 0, 400, 30);
@@ -86,8 +86,6 @@ public class MenuCadastro extends JFrame{
 		labelData.setBounds(15, 150, 170, 15);
 		getContentPane().add(labelData);
 		
-//		DateFormat format = new SimpleDateFormat("your_format");
-//		JFormattedTextField dateTextField = new JFormattedTextField(format);
 		textField_Data = new JTextField();
 		
 		textField_Data.setText("DD/MM/AAAA");

@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 import java.awt.event.MouseAdapter;
@@ -112,7 +113,8 @@ public class MenuInicio extends JFrame{
 
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setBackground(new Color(0, 128, 128));
-		lblNewLabel.setIcon(new ImageIcon("/home/Aguilar/UNB/OO/TrabalhoFinal_TF1 (2)/imagens/h1n1_2.jpg"));
+		ImageIcon icon = new ImageIcon(getClass().getResource("/images/gripeImg2.jpg"));
+		lblNewLabel.setIcon(icon);
 		lblNewLabel.setBounds(60, 108, 675, 137);
 		getContentPane().add(lblNewLabel);
 	}

@@ -1,6 +1,8 @@
 package visao;
 
 import javax.swing.JFrame;
+
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
@@ -9,6 +11,7 @@ import javax.swing.JLabel;
 
 import dados.Pessoa;
 
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -20,7 +23,7 @@ import javax.swing.ImageIcon;
 
 import servicos.Validacao;
 
-public class MenuConsultar extends JFrame{
+public class MenuConsultar extends JDialog{
 
 	private JTextField textFieldCPF;
 	private JButton btnConsultar;
@@ -39,8 +42,8 @@ public class MenuConsultar extends JFrame{
 		setFont(new Font("Century Schoolbook L", Font.PLAIN, 12));
 		setTitle("Consultar uma pessoa via CPF");
 		setBounds(100, 100, 450, 200);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
+		getContentPane().setBackground(new Color(242,250,251));
 		setVisible(true);
 		
 		JLabel titleTitulocpf = new JLabel("Preencha o campo abaixo com o dado solicitado.");

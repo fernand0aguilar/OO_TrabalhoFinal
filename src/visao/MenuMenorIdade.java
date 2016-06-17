@@ -5,6 +5,7 @@ package visao;
  *	Entrada: Quantidade de vacinas tomadas.
  */
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -15,6 +16,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -22,7 +24,7 @@ import javax.swing.JOptionPane;
 import dados.PessoaMenorIdade;
 import dados.Pessoa;
 
-public class MenuMenorIdade extends JFrame{
+public class MenuMenorIdade extends JDialog{
 
 	private Integer quantVezes;
 	
@@ -35,7 +37,7 @@ public class MenuMenorIdade extends JFrame{
 	private void criaMenuMenorIdade(final ArrayList<Pessoa> conjuntoPessoas,final String nomePessoa, final String sexo, final String numCPF, final String dataNascimento) {
 		setTitle("Quantidade de vacinas.");
 		setBounds(270, 250, 450, 100);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		getContentPane().setBackground(new Color(242,250,251));
 		getContentPane().setLayout(null);
 		setVisible(true);
 		

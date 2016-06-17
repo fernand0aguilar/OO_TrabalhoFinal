@@ -1,5 +1,6 @@
 package visao;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.ScrollPane;
 import java.util.ArrayList;
@@ -36,6 +37,7 @@ public class MenuFormularioPesquisar extends JFrame{
 	private void criaMenuPesquisar(final ArrayList<Pessoa> conjuntoPessoas) {		
 		setBounds(100, 100, 442, 127);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		getContentPane().setBackground(new Color(242,250,251));
 		getContentPane().setLayout(null);
 		
 		JLabel labelTituloPesquisar = new JLabel("Digite o nome que deseja pesquisar:");
